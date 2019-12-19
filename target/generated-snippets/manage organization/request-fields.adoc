@@ -1,0 +1,92 @@
+|===
+|Path|Type|Description
+
+|`+organizationDetails.id+`
+|`+Number+`
+|Id of organization
+
+|`+organizationDetails.name+`
+|`+String+`
+|Name of organization
+
+|`+organizationDetails.aliasName+`
+|`+Null+`
+|AliasName of the organization
+
+|`+organizationDetails.type+`
+|`+Null+`
+|Type of the organization
+
+|`+organizationDetails.salesforceId+`
+|`+Null+`
+|Sales force ID
+
+|`+organizationDetails.enableUserVerification+`
+|`+Boolean+`
+|User verification
+
+|`+organizationDetails.signUpPage+`
+|`+Boolean+`
+|Sign up Page
+
+|`+organizationDetails.themeId+`
+|`+Number+`
+|Theme ID
+
+|`+organizationDetails.createdBy+`
+|`+Number+`
+|Created By
+
+|`+organizationDetails.modifiedBy+`
+|`+Number+`
+|modified By
+
+|`+activationCode.id+`
+|`+Number+`
+|Id of Activation Code
+
+|`+activationCode.organizationId+`
+|`+Number+`
+|Id of organization
+
+|`+activationCode.activationCodes+`
+|`+Number+`
+|activationCodes of organization
+
+|`+activationCode.fromDate+`
+|`+String+`
+|Start date of activationCodes
+
+|`+activationCode.toDate+`
+|`+String+`
+|End date of activationCodes
+
+|`+activationCode.createdBy+`
+|`+Number+`
+|Created By
+
+|`+activationCode.modifiedBy+`
+|`+Number+`
+|modified By
+
+|`+domain.id+`
+|`+Number+`
+|Id of Domain
+
+|`+domain.organizationId+`
+|`+Number+`
+|Id of organization
+
+|`+domain.domains+`
+|`+String+`
+|domain of the organization
+
+|`+domain.createdBy+`
+|`+Number+`
+|Created By
+
+|`+domain.modifiedBy+`
+|`+Number+`
+|modified By
+
+|===

@@ -1,0 +1,46 @@
+[source,http,options="nowrap"]
+----
+POST /organization/ HTTP/1.1
+Content-Type: application/json
+Host: localhost:9000
+Content-Length: 852
+
+{
+  "organization" : {
+    "id" : 0,
+    "name" : "ANNA University chennai",
+    "aliasName" : "AUCNI",
+    "type" : "Academic",
+    "salesforceId" : "AU2019CH",
+    "enableUserVerification" : true,
+    "signUpPage" : true,
+    "themeId" : 2,
+    "createdBy" : 1,
+    "modifiedBy" : 0
+  },
+  "activationCodes" : [ {
+    "id" : 0,
+    "organizationId" : 0,
+    "activationCodes" : 432567,
+    "fromDate" : "1970-01-01",
+    "toDate" : "1970-01-01",
+    "createdBy" : 1,
+    "modifiedBy" : 0
+  } ],
+  "branding" : {
+    "id" : 0,
+    "organizationId" : 0,
+    "logo" : "http://google.com",
+    "favicon" : "http://google.com",
+    "createdBy" : 1,
+    "modifiedBy" : 0
+  },
+  "domain" : [ {
+    "id" : 0,
+    "organizationId" : 0,
+    "domains" : "http://google.com",
+    "createdBy" : 1,
+    "modifiedBy" : 0
+  } ]
+}
+----

@@ -1,0 +1,38 @@
+[source,http,options="nowrap"]
+----
+PUT /organization/ HTTP/1.1
+Content-Type: application/json
+Host: localhost:9000
+Content-Length: 646
+
+{
+  "organizationDetails" : {
+    "id" : 25,
+    "name" : "ANNA Palgalaikazhagam",
+    "aliasName" : null,
+    "type" : null,
+    "salesforceId" : null,
+    "enableUserVerification" : true,
+    "signUpPage" : true,
+    "themeId" : 0,
+    "createdBy" : 0,
+    "modifiedBy" : 1
+  },
+  "activationCode" : {
+    "id" : 0,
+    "organizationId" : 25,
+    "activationCodes" : 0,
+    "fromDate" : "1970-01-01",
+    "toDate" : "1970-01-01",
+    "createdBy" : 0,
+    "modifiedBy" : 1
+  },
+  "domain" : {
+    "id" : 0,
+    "organizationId" : 26,
+    "domains" : "www.yopmail.com",
+    "createdBy" : 0,
+    "modifiedBy" : 1
+  }
+}
+----

@@ -1,0 +1,116 @@
+|===
+|Path|Type|Description
+
+|`+organization.id+`
+|`+Number+`
+|Id of organization
+
+|`+organization.name+`
+|`+String+`
+|Name of organization
+
+|`+organization.aliasName+`
+|`+String+`
+|AliasName of the organization
+
+|`+organization.type+`
+|`+String+`
+|Type of the organization
+
+|`+organization.salesforceId+`
+|`+String+`
+|Sales force ID
+
+|`+organization.enableUserVerification+`
+|`+Boolean+`
+|User verification
+
+|`+organization.signUpPage+`
+|`+Boolean+`
+|Sign up Page
+
+|`+organization.themeId+`
+|`+Number+`
+|Theme ID
+
+|`+organization.createdBy+`
+|`+Number+`
+|Created By
+
+|`+organization.modifiedBy+`
+|`+Number+`
+|modified By
+
+|`+activationCodes[].id+`
+|`+Number+`
+|Id of Activation Code
+
+|`+activationCodes[].organizationId+`
+|`+Number+`
+|Id of organization
+
+|`+activationCodes[].activationCodes+`
+|`+Number+`
+|activationCodes of organization
+
+|`+activationCodes[].fromDate+`
+|`+String+`
+|Start date of activationCodes
+
+|`+activationCodes[].toDate+`
+|`+String+`
+|End date of activationCodes
+
+|`+activationCodes[].createdBy+`
+|`+Number+`
+|Created By
+
+|`+activationCodes[].modifiedBy+`
+|`+Number+`
+|modified By
+
+|`+branding.id+`
+|`+Number+`
+|Id of Branding
+
+|`+branding.organizationId+`
+|`+Number+`
+|Id of organization
+
+|`+.branding.logo+`
+|`+String+`
+|logo of organization
+
+|`+branding.favicon+`
+|`+String+`
+|favicon of organization
+
+|`+branding.createdBy+`
+|`+Number+`
+|Created By
+
+|`+branding.modifiedBy+`
+|`+Number+`
+|modified By
+
+|`+domain[].id+`
+|`+Number+`
+|Id of Activation Code
+
+|`+domain[].organizationId+`
+|`+Number+`
+|Id of organization
+
+|`+domain[].domains+`
+|`+String+`
+|domain of the organization
+
+|`+domain[].createdBy+`
+|`+Number+`
+|Created By
+
+|`+domain[].modifiedBy+`
+|`+Number+`
+|modified By
+
+|===

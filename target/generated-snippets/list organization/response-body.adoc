@@ -1,0 +1,15 @@
+[source,options="nowrap"]
+----
+[ {
+  "id" : 1,
+  "name" : "ANNA University",
+  "aliasName" : "AUCN",
+  "type" : "academic",
+  "salesforceId" : null,
+  "enableUserVerification" : false,
+  "signUpPage" : false,
+  "themeId" : 0,
+  "createdBy" : 0,
+  "modifiedBy" : 0
+} ]
+----

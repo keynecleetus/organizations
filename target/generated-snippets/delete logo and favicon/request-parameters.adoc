@@ -1,0 +1,7 @@
+|===
+|Parameter|Description
+
+|`+organizationId+`
+|organization to be deleted
+
+|===

@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http DELETE 'http://localhost:9000/organization/?organizationId=5'
+----

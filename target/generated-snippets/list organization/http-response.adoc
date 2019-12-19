@@ -1,0 +1,19 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 247
+
+[ {
+  "id" : 1,
+  "name" : "ANNA University",
+  "aliasName" : "AUCN",
+  "type" : "academic",
+  "salesforceId" : null,
+  "enableUserVerification" : false,
+  "signUpPage" : false,
+  "themeId" : 0,
+  "createdBy" : 0,
+  "modifiedBy" : 0
+} ]
+----

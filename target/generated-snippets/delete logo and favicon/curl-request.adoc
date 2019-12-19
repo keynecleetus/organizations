@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'http://localhost:9000/organization/?organizationId=5' -i -X DELETE
+----
