@@ -1,0 +1,63 @@
+= Organizations API
+Here creating an organization, listing an organization,managing an organization and deleting the logo and favicon of theorganization  has been documented
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:sectnums:
+:toclevels: 4
+:sectlinks:
+:nofooter:
+
+[.text-right]
+link:home.html[Back To Index]
+
+
+== create the organizations
+[[organizations]]
+.request
+include::{snippets}/organization/http-request.adoc[]
+.response
+include::{snippets}/organization/http-response.adoc[]
+.curl-request
+include::{snippets}/organization/curl-request.adoc[]
+.response-body
+include::{snippets}/organization/response-body.adoc[]
+.request-fields
+include::{snippets}/organization/request-fields.adoc[]
+
+== Lists all the organizations
+.request
+include::{snippets}/list organization/http-request.adoc[]
+.response
+include::{snippets}/list organization/http-response.adoc[]
+.curl-request
+include::{snippets}/list organization/curl-request.adoc[]
+.response-body
+include::{snippets}/list organization/response-body.adoc[]
+
+== Manage all the organizations
+.request
+include::{snippets}/manage organization/http-request.adoc[]
+.response
+include::{snippets}/manage organization/http-response.adoc[]
+.curl-request
+include::{snippets}/manage organization/curl-request.adoc[]
+.response-body
+include::{snippets}/manage organization/response-body.adoc[]
+.request-fields
+include::{snippets}/manage organization/request-fields.adoc[]
+
+
+== Delete logo and favicon
+.request
+include::{snippets}/delete logo and favicon/http-request.adoc[]
+.response
+include::{snippets}/delete logo and favicon/http-response.adoc[]
+.curl-request
+include::{snippets}/delete logo and favicon/curl-request.adoc[]
+.response-body
+include::{snippets}/delete logo and favicon/response-body.adoc[]
+.request-parameters
+include::{snippets}/delete logo and favicon/request-parameters.adoc[]
+
