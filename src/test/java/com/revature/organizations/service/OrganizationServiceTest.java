@@ -6,19 +6,24 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 import org.junit.Test;
-import com.revature.organizations.dao.OrganizationDAOImpl;
 import com.revature.organizations.dto.ManageOrganizationDTO;
 import com.revature.organizations.dto.OrganizationDTO;
 import com.revature.organizations.exceptions.ServiceException;
+import com.revature.organizations.exceptions.ValidatorException;
 import com.revature.organizations.model.ActivationCode;
 import com.revature.organizations.model.Branding;
 import com.revature.organizations.model.Domain;
 import com.revature.organizations.model.OrganizationDetails;
-import com.revature.organizations.validator.OrganizationServiceValidator;
+
 
 public class OrganizationServiceTest {
 
-	OrganizationService org = new OrganizationService(new OrganizationDAOImpl(),new OrganizationServiceValidator());
+	public OrganizationServiceTest(OrganizationService org) {
+		super();
+		this.org = org;
+	}
+
+	private OrganizationService org ;
 
 	@Test
 	public void listAll() throws ServiceException {
@@ -29,7 +34,7 @@ public class OrganizationServiceTest {
 	}
 
 	@Test(expected = ServiceException.class)
-	public void createOrganizationInValidTest() throws ServiceException {
+	public void createOrganizationInValidTest() throws ServiceException, ValidatorException {
 		Boolean isStatus = null;
 
 		OrganizationDTO organizationDTO = organizationObject();
@@ -91,7 +96,7 @@ public class OrganizationServiceTest {
 	}
 
 	@Test
-	public void createOrganizationValidTest() throws ServiceException {
+	public void createOrganizationValidTest() throws ServiceException, ValidatorException {
 		Boolean isStatus = null;
 		OrganizationDTO organizationDTO = organizationObject();
 		isStatus = org.createOrganization(organizationDTO);
@@ -116,7 +121,7 @@ public class OrganizationServiceTest {
 		ActivationCode code = new ActivationCode();
 		long date = 2019 - 12 - 06L;
 		Date fromDate = new Date(date);
-		code.setFromDate(fromDate);
+    	code.setFromDate(fromDate);
 		long toDate = 2019 - 12 - 12L;
 		Date toDateA = new Date(toDate);
 		code.setToDate(toDateA);
@@ -161,7 +166,7 @@ public class OrganizationServiceTest {
 		ActivationCode code = new ActivationCode();
 		long date = 2019 - 12 - 06L;
 		Date fromDate = new Date(date);
-		code.setFromDate(fromDate);
+	code.setFromDate(fromDate);
 		long toDate = 2019 - 12 - 12L;
 		Date toDateA = new Date(toDate);
 		code.setToDate(toDateA);

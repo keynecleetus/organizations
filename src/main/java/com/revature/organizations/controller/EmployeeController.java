@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.organizations.dto.EmployeeDTO;
 import com.revature.organizations.dto.Message;
 import com.revature.organizations.exceptions.ServiceException;
-
+import com.revature.organizations.exceptions.ValidatorException;
 import com.revature.organizations.model.OrganizationDetails;
 import com.revature.organizations.service.EmployeeService;
 
@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiResponses;
 public class EmployeeController {
 	private EmployeeService employeeService;
 
-	@Autowired
+	
 	public EmployeeController(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
@@ -47,8 +47,11 @@ public class EmployeeController {
 
 		} catch (ServiceException e) {
 			LOGGER.error("ServiceException", e);
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 
+		} catch (ValidatorException e) {
+			LOGGER.error("ValidatorException", e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 

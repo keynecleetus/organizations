@@ -16,7 +16,6 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.organizations.dto.ManageOrganizationDTO;
@@ -30,8 +29,12 @@ import com.revature.organizations.model.OrganizationDetails;
 @Repository
 public class OrganizationDAOImpl implements OrganizationDAO {
 
-	@Autowired
 	private DataSource datasource;
+
+	public OrganizationDAOImpl(DataSource datasource) {
+		super();
+		this.datasource = datasource;
+	}
 
 	private static final String SQL_EXCEPTION = "SQLException";
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationDAOImpl.class);
@@ -45,7 +48,7 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 		Date date = new Date();
 		Timestamp currentTime = new Timestamp(date.getTime());
 		try {
-			con = datasource.getConnection();
+			//con = datasource.getConnection();
 			con.setAutoCommit(false);
 			createOrganization = con.setSavepoint("SAVEPOINT");
 			// Creating organization
@@ -85,8 +88,8 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 
 					bld.append("(").append(activationCodes);
 					bld.append(activationCode.getActivationCodes()).append(",");
-					bld.append("'").append(activationCode.getFromDate()).append("'").append(",");
-					bld.append("'").append(activationCode.getToDate()).append("'").append(",");
+					// bld.append("'").append(activationCode.getFromDate()).append("'").append(",");
+					// bld.append("'").append(activationCode.getToDate()).append("'").append(",");
 					bld.append(activationCode.getCreatedBy()).append(",");
 					bld.append(organizationId).append(",");
 					bld.append("'").append(currentTime).append("'").append(")");
@@ -113,14 +116,14 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 				List<Domain> domain = organizationDTO.getDomain();
 				String organizationDomains = "";
 				int domainCount = 0;
-				StringBuilder string=new StringBuilder();
+				StringBuilder string = new StringBuilder();
 				for (Domain domains : domain) {
 					string.append("(").append(organizationDomains);
 					string.append("'").append(domains.getDomains()).append("'").append(",");
 					string.append(domains.getCreatedBy()).append(",");
 					string.append(organizationId).append(",");
 					string.append("'").append(currentTime).append("'").append(")");
-					organizationDomains=string.toString();
+					organizationDomains = string.toString();
 					domainCount++;
 					if (domainCount < domain.size()) {
 						organizationDomains += ",";
@@ -163,13 +166,18 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 				LOGGER.error(SQL_EXCEPTION, e);
 
 			}
-			throw new DBException(MessageConstant.CREATE_ORGANIZATION,e);
+			throw new DBException(MessageConstant.CREATE_ORGANIZATION, e);
 
+		}catch(Exception e) {
+			LOGGER.error(SQL_EXCEPTION, e);
+			throw new DBException("fields must not be empty",e);
 		} finally {
 			try {
 				con.close();
 				pst.close();
 			} catch (SQLException e) {
+				LOGGER.error(SQL_EXCEPTION, e);
+			}catch(Exception e) {
 				LOGGER.error(SQL_EXCEPTION, e);
 			}
 		}
@@ -202,13 +210,20 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 		} catch (SQLException e) {
 			LOGGER.error(SQL_EXCEPTION, e);
 			throw new DBException(MessageConstant.ORGANIZATION_LIST);
-		} finally {
+		}catch(Exception e) {
+			LOGGER.error(SQL_EXCEPTION, e);
+			throw new DBException("fields must not be empty",e);
+		}
+		finally {
 			try {
 				pst.close();
 				con.close();
 			} catch (SQLException e) {
 				LOGGER.error(SQL_EXCEPTION, e);
-			}
+			
+		}catch(Exception e) {
+			LOGGER.error(SQL_EXCEPTION, e);
+		}
 		}
 		return list;
 	}
@@ -233,7 +248,7 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 
 		} catch (SQLException e) {
 			LOGGER.error(SQL_EXCEPTION, e);
-			throw new DBException(MessageConstant.ORGANIZATION_LIST,e);
+			throw new DBException(MessageConstant.ORGANIZATION_LIST, e);
 		}
 		return organizationDTO;
 
@@ -285,14 +300,20 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 			} catch (SQLException e1) {
 				LOGGER.error(SQL_EXCEPTION, e1);
 			}
-			throw new DBException(MessageConstant.UNABLE_TO_UPDATE_THE_ORGANIZATION,e);
+			throw new DBException(MessageConstant.UNABLE_TO_UPDATE_THE_ORGANIZATION, e);
+		}catch(Exception e) {
+			LOGGER.error(SQL_EXCEPTION, e);
+			throw new DBException("fields must not be empty",e);
 		} finally {
 			try {
 				pst.close();
 				con.close();
 			} catch (SQLException e) {
 				LOGGER.error(SQL_EXCEPTION, e);
-			}
+			
+		}catch(Exception e) {
+			LOGGER.error(SQL_EXCEPTION, e);
+		}
 
 		}
 		LOGGER.info("dao" + isUpdate);
@@ -325,14 +346,21 @@ public class OrganizationDAOImpl implements OrganizationDAO {
 				e1.printStackTrace();
 			}
 			LOGGER.error(SQL_EXCEPTION, e);
-			throw new DBException(MessageConstant.UNABLE_TO_DELETE_LOGO_AND_FAVICON,e);
+			throw new DBException(MessageConstant.UNABLE_TO_DELETE_LOGO_AND_FAVICON, e);
+		}catch(Exception e) {
+			LOGGER.error(SQL_EXCEPTION, e);
+			throw new DBException("fields must not be empty",e);
+		
 		} finally {
 			try {
 				pst.close();
 				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
+			
+		}catch(Exception e) {
+			LOGGER.error(SQL_EXCEPTION, e);
+		}
 		}
 		LOGGER.info("result" + result);
 		return result;

@@ -19,7 +19,7 @@ import com.revature.organizations.dao.EmployeeDAOImpl;
 import com.revature.organizations.dto.EmployeeDTO;
 import com.revature.organizations.exceptions.DBException;
 import com.revature.organizations.exceptions.ServiceException;
-import com.revature.organizations.model.ActivationCode;
+import com.revature.organizations.exceptions.ValidatorException;
 import com.revature.organizations.model.EmployeeDetails;
 import com.revature.organizations.model.EmployeeRole;
 
@@ -31,7 +31,7 @@ import com.revature.organizations.model.EmployeeRole;
   
   @Mock EmployeeDAOImpl employeeDAO;
   
-  @Test public void addEmployeeValidTest() throws ServiceException,DBException { 
+  @Test public void addEmployeeValidTest() throws ServiceException,DBException, ValidatorException { 
 	  Boolean isStatus = false; 
 	  EmployeeDTO employeeDTO = new EmployeeDTO(); 
 	  EmployeeDetails employee=new EmployeeDetails();
@@ -59,7 +59,7 @@ import com.revature.organizations.model.EmployeeRole;
   
   assertTrue(isStatus); } 
   //@Test(expected=ServiceException.class) 
-  public void addEmployeeInValidTest() throws ServiceException, DBException { 
+  public void addEmployeeInValidTest() throws ServiceException, DBException, ValidatorException { 
 	  Boolean isStatus = false;
 	  EmployeeDTO employeeDTO = new EmployeeDTO();
   EmployeeDetails employee=new EmployeeDetails();

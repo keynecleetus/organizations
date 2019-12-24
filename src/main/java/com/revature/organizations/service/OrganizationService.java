@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import com.revature.organizations.dao.OrganizationDAO;
 import com.revature.organizations.dao.OrganizationDAOImpl;
@@ -23,11 +22,13 @@ import com.revature.organizations.validator.OrganizationServiceValidator;
 public class OrganizationService {
 	
 	
+	private static final String ENTERED_INTO_ORGANIZATION_SERVICE = "Entered into Organization Service";
+
 	private  final OrganizationDAO organizationDAOImpl;
 	
 	private final OrganizationServiceValidator organizationServiceValidator;
 
-	@Autowired
+	
 	public OrganizationService(OrganizationDAOImpl organizationDAOImpl,OrganizationServiceValidator organizationServiceValidator) {
 		super();
 		this.organizationDAOImpl = organizationDAOImpl;
@@ -36,15 +37,15 @@ public class OrganizationService {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationService.class);
 
-	public Boolean createOrganization(final OrganizationDTO organizationDTO) throws ServiceException {
+	public Boolean createOrganization(final OrganizationDTO organizationDTO) throws ServiceException, ValidatorException {
 		Boolean isStatus = true;
-		LOGGER.info("Entered into Organization Service");
+		LOGGER.info(ENTERED_INTO_ORGANIZATION_SERVICE);
 		try {
 			organizationServiceValidator.organizationService(organizationDTO);
 
 			isStatus = organizationDAOImpl.createOrganization(organizationDTO);
 
-		} catch (DBException | ValidatorException e) {
+		} catch (DBException e) {
 			LOGGER.error("service Exception in creating an organization", e);
 			throw new ServiceException(e.getMessage(),e);
 		}
@@ -54,7 +55,7 @@ public class OrganizationService {
 
 	public List<OrganizationDetails> getAll() throws ServiceException {
 		List<OrganizationDetails> organizationDTO = null;
-		LOGGER.info("Entered into Organization Service");
+		LOGGER.info(ENTERED_INTO_ORGANIZATION_SERVICE);
 		try {
 
 			organizationDTO = organizationDAOImpl.getAll();
@@ -70,7 +71,7 @@ public class OrganizationService {
 	}
 	public Boolean manageOrganization(ManageOrganizationDTO organization)throws ServiceException
 	{
-		LOGGER.info("Entered into Organization Service");
+		LOGGER.info(ENTERED_INTO_ORGANIZATION_SERVICE);
 		Boolean isStatus=false;
 		try {
 			isStatus=organizationDAOImpl.manageOrganization(organization);
@@ -84,7 +85,7 @@ public class OrganizationService {
 	}
 
 	public Boolean deleteLogo(int organizationId)throws ServiceException {
-		LOGGER.info("Entered into Organization Service");
+		LOGGER.info(ENTERED_INTO_ORGANIZATION_SERVICE);
 		Boolean isStatus=false;
 		try {
 			isStatus=organizationDAOImpl.deleteLogo(organizationId);

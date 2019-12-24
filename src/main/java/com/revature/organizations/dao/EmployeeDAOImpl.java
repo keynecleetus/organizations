@@ -13,7 +13,6 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.organizations.dto.EmployeeDTO;
@@ -23,8 +22,15 @@ import com.revature.organizations.model.EmployeeRole;
 
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
-	@Autowired
+	
 	private DataSource datasource;
+	public EmployeeDAOImpl(DataSource datasource) {
+		super();
+		this.datasource = datasource;
+	}
+
+	
+	
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDAOImpl.class);
 
@@ -104,12 +110,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				LOGGER.error("SQLException", e1);
 			}
 			throw new DBException(MessageConstant.UNABLE_TO_ADD_EMPLOYEE, e);
-		} finally {
+		}catch(Exception e) {
+			LOGGER.error("Exception", e);
+			throw new DBException("fields must not be empty",e);
+		}finally {
 			try {
 				con.close();
 				pst.close();
 			} catch (SQLException e) {
 				LOGGER.error("SQLException", e);
+			}catch(Exception e) {
+				LOGGER.error("Exception", e);
 			}
 
 		}

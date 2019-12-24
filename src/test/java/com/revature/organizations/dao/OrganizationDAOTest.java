@@ -18,7 +18,7 @@ import com.revature.organizations.model.OrganizationDetails;
 
 public class OrganizationDAOTest {
 
-	OrganizationDAOImpl organizationDAOImpl = new OrganizationDAOImpl();
+	OrganizationDAOImpl organizationDAOImpl = new OrganizationDAOImpl(null);
 
 	@Test
 	public void listAll() throws DBException {

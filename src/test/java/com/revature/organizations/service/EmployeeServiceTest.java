@@ -9,20 +9,23 @@ import java.util.List;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.revature.organizations.dao.EmployeeDAOImpl;
 import com.revature.organizations.dto.EmployeeDTO;
 import com.revature.organizations.exceptions.ServiceException;
 import com.revature.organizations.exceptions.ValidatorException;
 import com.revature.organizations.model.EmployeeDetails;
 import com.revature.organizations.model.EmployeeRole;
-import com.revature.organizations.validator.EmployeeServiceValidation;
+
 
 public class EmployeeServiceTest {
+	
+	private EmployeeService employeeService;
 
-	EmployeeService employeeService = new EmployeeService(new EmployeeDAOImpl(), new EmployeeServiceValidation());
+	public EmployeeServiceTest(EmployeeService employeeService) {
+		super();
+		this.employeeService = employeeService;
+	}
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeService.class);
-
+	private Logger LOGGER=LoggerFactory.getLogger(EmployeeServiceTest.class);
 	@Test(expected = ServiceException.class)
 	public void addEmployeeValidTest() throws ServiceException, ValidatorException {
 		Boolean isStatus = false;

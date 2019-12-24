@@ -20,6 +20,7 @@ import com.revature.organizations.dto.ManageOrganizationDTO;
 import com.revature.organizations.dto.OrganizationDTO;
 import com.revature.organizations.exceptions.DBException;
 import com.revature.organizations.exceptions.ServiceException;
+import com.revature.organizations.exceptions.ValidatorException;
 import com.revature.organizations.model.ActivationCode;
 import com.revature.organizations.model.Branding;
 import com.revature.organizations.model.Domain;
@@ -62,7 +63,7 @@ public class OrganizationServiceMockTest {
 	}
 
 	@Test
-	public void createOrganizationValidTest() {
+	public void createOrganizationValidTest() throws ValidatorException {
 		Boolean isStatus = false;
 		OrganizationDTO organizationDTO = new OrganizationDTO();
 		OrganizationDetails organization = new OrganizationDetails();
@@ -125,7 +126,7 @@ public class OrganizationServiceMockTest {
 	}
 
 	@Test(expected = ServiceException.class)
-	public void createOrganizationInValidTest() throws DBException, ServiceException {
+	public void createOrganizationInValidTest() throws DBException, ServiceException, ValidatorException {
 
 		OrganizationDTO organizationDTO = new OrganizationDTO();
 		OrganizationDetails organization = new OrganizationDetails();
