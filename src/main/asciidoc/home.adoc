@@ -1,0 +1,14 @@
+= Organizations Documentation
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:nofooter:
+
+[[resources]]
+== Resources
+. link:index.html[Organization endpoints]
+
+
