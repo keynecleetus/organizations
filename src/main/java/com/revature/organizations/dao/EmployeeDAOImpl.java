@@ -110,7 +110,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				pst.close();
 			} catch (SQLException e) {
 				LOGGER.error("SQLException", e);
-				throw new DBException(MessageConstant.UNABLE_TO_CLOSE, e);
 			}
 
 		}
